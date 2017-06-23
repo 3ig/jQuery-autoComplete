@@ -2,7 +2,9 @@
 	jQuery autoComplete v1.0.7
     Copyright (c) 2014 Simon Steinberger / Pixabay
     GitHub: https://github.com/Pixabay/jQuery-autoComplete
-	License: http://www.opensource.org/licenses/mit-license.php
+    License: http://www.opensource.org/licenses/mit-license.php
+    !!! FORKED FOR OUR INTERNAL NEEDS !!!
+    here: https://github.com/3ig/jQuery-autoComplete	
 */
 
 (function($){
