@@ -37,11 +37,19 @@
             that.last_val = '';
 
             that.updateSC = function(resize, next){
-                that.sc.css({
-                    top: that.offset().top + that.outerHeight(),
-                    left: that.offset().left,
-                    width: that.outerWidth()
-                });
+                if (o.appendTo === document.body || o.appendTo === document.documentElement) {
+                    that.sc.css({
+                        top: that.offset().top + that.outerHeight(),
+                        left: that.offset().left,
+                        width: that.outerWidth()
+                    });
+                } else {
+                    that.sc.css({
+                        top: that.position().top + that.outerHeight(),
+                        left: that.position().left,
+                        width: that.outerWidth()
+                    });
+                }
                 if (!resize) {
                     that.sc.show();
                     if (!that.sc.maxHeight) that.sc.maxHeight = parseInt(that.sc.css('max-height'));
@@ -59,7 +67,7 @@
             }
             $(window).on('resize.autocomplete', that.updateSC);
 
-            that.sc.appendTo('body');
+            that.sc.appendTo(o.appendTo);
 
             that.sc.on('mouseleave', '.autocomplete-suggestion', function (){
                 $('.autocomplete-suggestion.selected').removeClass('selected');
@@ -159,6 +167,7 @@
         minChars: 3,
         delay: 150,
         cache: 1,
+        appendTo: document.body,
         menuClass: '',
         renderItem: function (item, search){
             // escape special characters
